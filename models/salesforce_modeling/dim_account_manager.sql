@@ -1,3 +1,8 @@
+{{ config(
+    materialized = "table"
+) }}
+
+
    SELECT 
             id                                                                  AS dim_acc_manager_id,
             account_id                                                          AS dim_acc_id,

@@ -1,3 +1,7 @@
+{{ config(
+    materialized = "table"
+) }}
+
 SELECT 
         id                                                                      AS dim_consultant_id,
         name                                                                    AS consultant_name,
