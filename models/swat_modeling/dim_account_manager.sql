@@ -1,6 +1,6 @@
 WITH source AS (
     
-    SELECT * FROM {{ ref('prep_account_manager')}}
+    SELECT * FROM {{ ref('prep_user')}}
 
 ), final AS (
 
