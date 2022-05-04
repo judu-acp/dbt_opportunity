@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: swat_usage
+    database: analytics
+    schema: amplify_salesforce
+    tables:
+      - name: account
+      - name: consultant_c
+      - name: opportunity
+      - name: user
+
+      
+  - name: date
+    database: analytics
+    schema: common
+    tables:
+      - name: dim_date
