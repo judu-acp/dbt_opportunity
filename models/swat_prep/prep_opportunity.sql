@@ -11,4 +11,4 @@ SELECT
     revenue_type_c                                                          AS revenue_type,
     forecast_category
         
-FROM analytics.amplify_salesforce.opportunity
+FROM {{ source('swat_usage', 'opportunity')}}

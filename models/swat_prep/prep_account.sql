@@ -116,4 +116,4 @@ SELECT
         ELSE NULL
 END                                                         AS billing_state
     
-    FROM analytics.amplify_salesforce.account
+    FROM {{ source('swat_usage', 'account')}}
