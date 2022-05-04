@@ -1,0 +1,8 @@
+version: 2
+
+sources:   
+  - name: date
+    database: analytics
+    schema: common
+    tables:
+      - name: dim_date
