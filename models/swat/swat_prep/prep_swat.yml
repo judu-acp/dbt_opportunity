@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: prep_account
+    description: A staging view of specific columns of the raw account data
+    columns:
+      - name: acc_id
+        description: The unique id of the account from the prep_account model
+        tests:
+          - unique
+          - not_null
+      - name: parent_acc_id
+        description: The unique id associated with the overarching parent account
+      - name: acc_name
+        description: The name of the account
+      - name: billing_street
+        description: The billing street of the account
+      - name: billing_city
+        description: The billing city of the account
+      - name: billing_postal_code
+        description: The billing postal_code of the account
+      - name: billing_country
+        description: The billing country of the account
+      - name: billing_state
+        description: The billing state of the account
+
+
+  - name: prep_consultant
+    description: A staging view of specific columns of the raw consultant data
+    columns:
+      - name: consultant_id
+        description: The unique id of a consultant from the prep_consultant model
+        tests:
+          - unique
+          - not_null
+      - name: opp_id
+        description: The unique id of an opportunity from the prep_opportunity model
+      - name: consultant_name
+        description: The name of the consultant
+      - name: bill_rate
+        description: The consultant's billing rate for the opportunity
+      - name: consultant_status
+        description: The current status of the consultant
+      - name: available_date
+        description: The date the consultant is next available for a new project
+      - name: utilization_pct
+        description: The percent utilization of the consultant's total billable work week
+
+
+
+  - name: prep_opportunity
+    description: A staging view of specific columns of the raw opportunity data
+    columns:
+      - name: opp_id
+        description: The unique id of an opportunity from the prep_opportunity model
+        tests:
+          - unique
+          - not_null
+      - name: opp_name
+        description: The name of the opportunity
+      - name: acc_id
+        description: The unique id of the account from the prep_account model
+      - name: acc_manager_id
+        description: The unique id of the account manager from the prep_user model
+      - name: close_date_id
+        description: The id associated with when a opportunity is closed
+        tests:
+          - not_null
+      - name: opp_close_date
+        description: The date the opportunity closed
+      - name: revenue
+        description: The net amount of money associated with an opporunity
+      - name: stage
+        description: The stage the current opportunity is in
+      - name: pillar
+        description: Details the type of roles the opportunity is in need of
+      - name: forecast_category
+        description: Details how close the opportunity is to being closed
+
+
+  - name: prep_user
+    description: A staging view of specific columns of the raw user data
+    columns:
+      - name: acc_manager_id
+        description: The unique id of the account manager from the prep_user model
+        tests:
+          - unique
+          - not_null
+      - name: acc_id
+        description: The unique id of the account from the prep_account model
+      - name: manager_first_name
+        description: The first name of the account manager
+      - name: manager_last_name
+        description: The last name of the account manager
+      - name: manager_name
+        description: The full name of the account manager

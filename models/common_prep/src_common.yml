@@ -2,7 +2,9 @@ version: 2
 
 sources:   
   - name: date
+    description: The raw date data uploaded to snowflake via csv
     database: analytics
     schema: common
     tables:
       - name: dim_date
+        description: A generic date table filled with useful fields
