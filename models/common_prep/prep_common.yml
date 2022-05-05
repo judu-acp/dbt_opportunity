@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: prep_date
+    description: A staging view of specific columns of the raw date data
+    columns: 
+      - name: date_id
+        description: The unique id of a date from the prep_date model
+        tests:
+          - unique
+          - not_null
+      - name: date_day
+        description: The date down to the day grain
+      - name: day_name
+        description: The name of the day of the week associated with the date
+      - name: day
+        description: The numbered day of the year
+      - name: month
+        description: The numbered month of the year
+      - name: year
+        description: The numbered year

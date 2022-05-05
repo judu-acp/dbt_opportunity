@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: swat_usage
+    description: The raw schema of the snowflake salesforce data
+    database: analytics
+    schema: amplify_salesforce
+    tables:
+      - name: account
+        description: The raw account data coming into snowflake from salesforce via fivetran
+      - name: consultant_c
+        description: The raw consultant_c data coming into snowflake from salesforce via fivetran
+      - name: opportunity
+        description: The raw oppoortunity data coming into snowflake from salesforce via fivetran
+      - name: user
+        description: The raw user data coming into snowflake from salesforce via fivetran
