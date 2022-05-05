@@ -4,7 +4,7 @@ sources:
   - name: date
     description: The raw date data uploaded to snowflake via csv
     database: analytics
-    schema: date
+    schema: dbt_judume
     tables:
-      - name: dim_date
+      - name: src_date
         description: A generic date table filled with useful fields
