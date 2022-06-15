@@ -8,7 +8,7 @@ WITH source AS (
 
 ), opportunity AS (
 
-    SELECT * FROM {{ ref('dim_opportunity')}}
+    SELECT * FROM {{ ref('prep_opportunity')}}
 
 ), account AS (
     
@@ -33,19 +33,17 @@ WITH source AS (
         account.acc_name,
         account.billing_state,
         account_manager.manager_name,
-        consultant.consultant_name,
-        consultant.bill_rate,
-        consultant.consultant_status,
-        consultant.available_date,
-        consultant.utilization_pct,
+        --consultant.consultant_name,
+        --consultant.bill_rate,
+        --consultant.consultant_status,
+        --consultant.available_date,
+        --consultant.utilization_pct,
         date.date_day
 
 
     FROM source
-        LEFT JOIN consultant 
-            ON consultant.dim_consultant_id = source.dim_consultant_id
         LEFT JOIN opportunity 
-            ON opportunity.dim_opp_id = source.opp_id
+            ON opportunity.opp_id = source.opp_id
         LEFT JOIN date 
             ON date.dim_date_id = source.dim_date_id
         LEFT JOIN account 
