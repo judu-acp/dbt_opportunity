@@ -6,10 +6,6 @@ WITH source AS (
     
     SELECT * FROM {{ ref('dim_consultant')}}
 
-), opportunity AS (
-
-    SELECT * FROM {{ ref('dim_opportunity')}}
-
 ), account AS (
     
     SELECT * FROM {{ ref('dim_account')}}
@@ -25,25 +21,20 @@ WITH source AS (
 ), final AS (
 
     SELECT 
-        opportunity.dim_opp_id,
+        source.opp_id,
         account.dim_acc_id,
         account_manager.dim_acc_manager_id,
         date.dim_date_id,
-        opportunity.close_date_id,
-        dim_consultant_id,
+        source.close_date_id,
         coalesce(revenue, 0)                                        AS revenue
 
-    FROM opportunity
-        LEFT JOIN consultant 
-            ON consultant.dim_opp_id = opportunity.dim_opp_id
-        LEFT JOIN source 
-            ON source.opp_id = opportunity.dim_opp_id
+    FROM source
         LEFT JOIN date 
-            ON date.dim_date_id = opportunity.close_date_id
+            ON date.dim_date_id = source.close_date_id
         LEFT JOIN account 
-            ON account.dim_acc_id = opportunity.dim_acc_id
+            ON account.dim_acc_id = source.dim_acc_id
         LEFT JOIN account_manager 
-            ON account_manager.dim_acc_manager_id = opportunity.dim_acc_manager_id
+            ON account_manager.dim_acc_manager_id = source.dim_acc_manager_id
 )
 
 SELECT * FROM final
