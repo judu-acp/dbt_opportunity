@@ -45,7 +45,7 @@ WITH source AS (
         LEFT JOIN consultant 
             ON consultant.dim_consultant_id = source.dim_consultant_id
         LEFT JOIN opportunity 
-            ON opportunity.dim_opp_id = source.dim_opp_id
+            ON opportunity.dim_opp_id = source.opp_id
         LEFT JOIN date 
             ON date.dim_date_id = source.dim_date_id
         LEFT JOIN account 

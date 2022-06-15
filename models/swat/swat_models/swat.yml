@@ -4,7 +4,7 @@ models:
   - name: fct_opportunity
     description: The fact model holding all of the IDs and measures from the salesforce swat data
     columns:
-      - name: dim_opp_id
+      - name: opp_id
         description: The unique id of an opportunity from the dim_opportunity model
         tests:
           - unique
@@ -70,7 +70,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: dim_opp_id
+      - name: opp_id
         description: The unique id of an opportunity from the dim_opportunity model
       - name: consultant_name
         description: The name of the consultant
@@ -83,33 +83,36 @@ models:
       - name: utilization_pct
         description: The percent utilization of the consultant's total billable work week
 
-
-  - name: dim_opportunity
-    description: The dimensional model holding all attributes relating to an opportunity
-    columns:
-      - name: dim_opp_id
-        description: The unique id of an opportunity from the dim_opportunity model
-        tests:
-          - unique
-          - not_null
-      - name: opp_name
-        description: The name of the opportunity
-      - name: dim_acc_id
-        description: The unique id of the account from the dim_account model
-      - name: dim_acc_manager_id
-        description: The unique id of the account manager from the dim_account_manager model
-      - name: close_date_id
-        description: The id associated with when a opportunity is closed
-        tests:
-          - not_null
-      - name: opp_close_date
-        description: The date the opportunity closed
+  - name: mart_opportunity
+    description: A mart modeled to hold the specific information regarding swat opportunities to be utilized in tableau or other visualization tools where a mart is beneficial
+    columns: 
       - name: revenue
         description: The net amount of money associated with an opporunity
+      - name: opp_name
+        description: The name of the opportunity
       - name: stage
         description: The stage the current opportunity is in
       - name: pillar
         description: Details the type of roles the opportunity is in need of
       - name: forecast_category
         description: Details how close the opportunity is to being closed
+      - name: acc_name
+        description: The name of the account
+      - name: billing_state
+        description: The billing state of the account
+      - name: manager_name
+        description: The full name of the account manager
+      - name: consultant_name
+        description: The name of the consultant
+      - name: bill_rate
+        description: The consultant's billing rate for the opportunity
+      - name: consultant_status
+        description: The current status of the consultant
+      - name: available_date
+        description: The date the consultant is next available for a new project
+      - name: utilization_pct
+        description: The percent utilization of the consultant's total billable work week
+      - name: date_day
+        description: The date down to the day grain
+ 
 

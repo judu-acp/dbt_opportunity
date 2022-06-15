@@ -1,8 +1,8 @@
 SELECT 
     id                                                                      AS opp_id,
     name                                                                    AS opp_name,
-    account_id                                                              AS acc_id,
-    owner_id                                                                AS acc_manager_id,
+    account_id                                                              AS dim_acc_id,
+    owner_id                                                                AS dim_acc_manager_id,
     to_char(close_date, 'YYYYMMDD')::int                                    AS close_date_id,
     close_date                                                              AS opp_close_date,
     amount                                                                  AS revenue,

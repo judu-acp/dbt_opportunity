@@ -6,7 +6,7 @@ WITH source AS (
 
     SELECT 
         consultant_id                                                           AS dim_consultant_id,
-        opp_id                                                                  AS dim_opp_id,
+        opp_id,
         consultant_name,
         bill_rate,
         consultant_status,
